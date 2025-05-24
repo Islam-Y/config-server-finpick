@@ -1,0 +1,21 @@
+server:
+  servlet:
+    context-path: '/API/v1/finPick'
+  port: ${PORT:9997}
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Islam-Y/configs-finpick.git
+          username: ${REPO_USER:git_finPick}
+          password: ${REPO_PASS:git_finPick_pass}
+  security:
+    user:
+      name: ${SERVER_USER:config}
+      password: ${SERVER_PASS:config_pass}
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health,info
